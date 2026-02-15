@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { User } from '@/lib/types';
 import LogoutButton from './LogoutButton';
 
@@ -41,9 +42,11 @@ export default function Navbar({ user }: NavbarProps) {
             {/* User Avatar */}
             <div className="flex items-center gap-3">
               {user.user_metadata?.avatar_url ? (
-                <img
+                <Image
                   src={user.user_metadata.avatar_url}
                   alt={user.user_metadata.full_name || 'User'}
+                  width={36}
+                  height={36}
                   className="w-9 h-9 rounded-full ring-2 ring-white shadow-md"
                 />
               ) : (

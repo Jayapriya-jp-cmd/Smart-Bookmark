@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { Bookmark } from '@/lib/types';
 import { formatRelativeTime, getFaviconUrl, copyToClipboard, extractDomain } from '@/lib/utils';
 import { useToast } from '@/contexts/ToastContext';
@@ -59,10 +60,12 @@ export default function BookmarkItem({ bookmark, onDelete }: BookmarkItemProps) 
         <div className="flex-shrink-0">
           <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 flex items-center justify-center overflow-hidden shadow-sm group-hover:shadow-md transition-shadow">
             {!imageError && faviconUrl ? (
-              <img
+              <Image
                 src={faviconUrl}
-                alt=""
-                className="w-7 h-7 object-contain"
+                alt="Bookmark favicon"
+                width={28}
+                height={28}
+                className="object-contain"
                 onError={() => setImageError(true)}
               />
             ) : (
